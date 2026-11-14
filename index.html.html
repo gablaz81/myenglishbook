@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterbook: La Logica Universale dei Verbi</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-stative: #16a085;
+            --accent-action: #8e44ad;
+            --accent-rule: #d35400;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #576574;
+            font-style: italic;
+            margin-bottom: 35px;
+        }
+
+        .chapter-intro {
+            font-size: 1.1rem;
+            color: #576574;
+            background: #f1f2f6;
+            padding: 20px;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 25px;
+        }
+
+        .section-block {
+            background: #fafbfc;
+            border: 1px solid #e1e8ed;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .choice-explanation {
+            font-size: 0.98rem;
+            color: #34495e;
+            background: #fdfefe;
+            border-left: 3px solid #bdc3c7;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .code-snippet {
+            font-family: monospace;
+            background: #dfe4ea;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #2f3542;
+        }
+
+        .translation {
+            color: #576574;
+            font-style: italic;
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* SFONDO GIALLO PER LA REGOLA D'ORO */
+        .rule-gold {
+            background: #fdf3cf;
+            border-left: 4px solid #f1c40f;
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            color: #7d6608;
+        }
+
+        .rule-gold h3 {
+            margin-top: 0;
+            color: #b9770e;
+        }
+
+        /* STILE PER I MENU' INTERATTIVI A TENDINA */
+        .nuance-dropdown {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: #f8fafc;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .nuance-dropdown summary {
+            background-color: #34495e;
+            color: white;
+            padding: 6px 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            user-select: none;
+            outline: none;
+            text-align: center;
+            transition: background 0.2s ease;
+            border-radius: 4px;
+        }
+
+        .nuance-dropdown summary:hover {
+            background-color: #2c3e50;
+        }
+
+        .nuance-content {
+            padding: 12px 15px;
+            font-size: 0.88rem;
+            color: #2c3e50;
+            background: #ffffff;
+            border-top: 1px solid #cbd5e1;
+        }
+
+        /* TABELLA TASSONOMICA */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #ffffff;
+            font-size: 0.90rem;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: bold;
+        }
+
+        .tag-stative {
+            background: #e8f8f5;
+            color: #117a65;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .tag-action {
+            background: #f4ecf7;
+            color: #512e5f;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* DIALOGO GUIDATO */
+        .dialogue-box {
+            background-color: #e8f8f5;
+            border-left: 4px solid var(--accent-stative);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+
+        .dialogue-box h3 {
+            margin-top: 0;
+            color: #117a65;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            font-size: 0.96rem;
+            color: #2c3e50;
+        }
+
+        .grammar-explanation {
+            display: block;
+            background: #ffffff;
+            border-left: 3px solid #16a085;
+            padding: 10px 15px;
+            margin-top: 6px;
+            font-size: 0.88rem;
+            color: #34495e;
+            border-radius: 0 4px 4px 0;
+            line-height: 1.5;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Masterbook: La Logica Universale dei Verbi</h1>
+    <div class="subtitle">La guida smart per dominare i verbi inglesi senza sbattimenti e senza memoria a pappagallo</div>
+
+    <div class="chapter-intro">
+        Dimentica le tabelle noiose della scuola. Qui ti spiego come funziona davvero l'ingranaggio dei verbi: capiremo al volo la differenza tra stati immobili e azioni in movimento, useremo la regola d'oro del tempo e avrai sottomano una mappa intelligente di tutto il sistema.
+    </div>
+
+    <!-- 1. STATIVI VS AZIONE -->
+    <div class="section-block">
+        <h3>1. Il principio base: Foto fissa vs. Film in movimento</h3>
+        <div class="choice-explanation">
+            In inglese, tutto quello che facciamo o proviamo si divide in due grandi categorie:
+        </div>
+        <ul>
+            <li><strong>Stative Verbs (Verbi di Stato):</strong> Sono le cose che "esistono e basta", senza alcuno sforzo fisico (tipo sapere qualcosa, possedere una casa, amare la pizza). ➔ <strong>Vogliono sempre la forma SIMPLE</strong>, vietatissimo metterci l'<em>-ing</em> (es. diciamo <em>"I know the truth"</em>, mai <s>"I am knowing"</s>).</li>
+            <li><strong>Action Verbs (Verbi d'Azione):</strong> Sono le attività dinamiche, quello che *fai* muovendoti o impegnando la mente (correre, lavorare, scrivere). ➔ <strong>Adorano le forme CONTINUOUS</strong> con l'<em>-ing</em>, perfette per fotografare l'azione mentre sta succedendo (es. <em>"He is writing an email"</em>).</li>
+        </ul>
+
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin: 20px 0; font-size: 0.98rem; color: #34495e;">
+            <p><strong>• Il mondo immobile degli Stati (I tempi semplici):</strong><br>
+            Pensa a ciò che sei, a quello che provi o a quello che possiedi. Se dici <em>"Ho una macchina"</em>, non stai faticando in questo momento: è uno stato fisso sullo sfondo della tua vita, non ha un inizio e una fine in corso. Perciò usi il Simple.</p>
+
+            <p style="margin-top: 15px;"><strong>• Il mondo in movimento del "Fare" (I tempi continui con <em>-ing</em>):</strong><br>
+            Pensa a quando stai attivamente sgobbando su qualcosa: stai scrivendo, correndo o parlando. Lì c'è un film in movimento, c'è energia che scorre minuto dopo minuto. Ecco perché scatta l'<em>-ing</em>: accendi la cinepresa nel bel mezzo dell'azione.</p>
+        </div>
+
+        <p><strong>🛠️ Il trucco dello stop mentale:</strong> Se qualcuno ti urla <em>"Stop!"</em> e puoi piantare lì l'azione all'istante, hai davanti un verbo d'azione (quindi via libera all'<em>-ing</em>). Se ti urla <em>"Smetti di sapere la matematica!"</em>... beh, non ha senso, perché non è un'azione che puoi interrompere fisicamente!</p>
+    </div>
+
+    <!-- LE ECCEZIONI SMART: CAMALEONTE E INFINITO NUDO (SPOSTATE QUI) -->
+    <div class="section-block" style="border-left: 4px solid var(--accent-action); background: #fdfefe;">
+        <h3>2. Le eccezioni smart: I verbi Camaleonte e l'infinito nudo</h3>
+        <div class="choice-explanation">
+            Prima di passare alle regole di reggenza, ecco due particolarità avanzate che chiariscono subito il comportamento di alcuni verbi speciali:
+        </div>
+        
+        <p><strong>A) I Verbi Camaleonte (Stativi che si travestono da d'azione):</strong><br>
+        Certi verbi famosissimi cambiano faccia a seconda di come li usi nel discorso:<br>
+        • <strong>Have:</strong> <span class="code-snippet">I have a car</span> (Stativo = possesso fisso) vs <span class="code-snippet">I'm having lunch</span> (D'azione = sto pranzando, è un'attività in corso).<br>
+        • <strong>Think:</strong> <span class="code-snippet">I think it's good</span> (Stativo = la mia opinione fissa) vs <span class="code-snippet">I'm thinking about it</span> (D'azione = ci sto riflettendo attivamente adesso).<br>
+        • <strong>Taste:</strong> <span class="code-snippet">The soup tastes good</span> (Stativo = la zuppa ha un buon sapore) vs <span class="code-snippet">The chef is tasting the soup</span> (D'azione = lo chef sta assaggiando attivamente).</p>
+
+        <p style="margin-top: 15px;"><strong>B) L'infinito nudo (Senza TO, senza ING e senza nulla):</strong><br>
+        Attenzione: non tutti i verbi in inglese vogliono per forza il *to* o l'*-ing* quando sono seguiti da un secondo verbo. Esiste una categoria in cui il secondo verbo va completamente "nudo":<br>
+        • <strong>I Verbi Modali:</strong> <span class="code-snippet">I can swim</span>, <span class="code-snippet">You must go</span> (dopo can, must, should, will, would non ci va mai nulla).<br>
+        • <strong>Make e Let:</strong> Quando significano "costringere" o "lasciare fare", metti l'oggetto e poi il verbo base senza niente in mezzo (es. <span class="code-snippet">You make me smile</span>, mai *to smile*; <span class="code-snippet">Let me go</span>).<br>
+        • <strong>I Verbi di Percezione:</strong> Quando c'è un oggetto in mezzo, vogliono l'infinito nudo (es. <span class="code-snippet">I saw him cross the street</span>).<br>
+        • <strong>Help:</strong> È comodissimo perché accetta sia il <em>to</em> che l'infinito nudo senza cambiare di una virgola il senso (es. <span class="code-snippet">I helped him (to) carry the box</span>).</p>
+    </div>
+
+    <!-- REGOLA D'ORO DEL TEMPO (SFONDO GIALLO - PIÙ APPROFONDITA) -->
+    <div class="rule-gold">
+        <h3>⚡ La Regola d'Oro del TEMPO (Il quadro completo di To, -ing e Zero)</h3>
+        <div style="font-size: 0.98rem; margin-bottom: 15px;">
+            Quando colleghi un secondo verbo a un altro, la scelta si basa su una logica psicologica e temporale profonda strutturata in tre pilastri:
+        </div>
+
+        <p><strong>1. Il <code>TO</code> = Tensione, Futuro, Obiettivo o Compito da compiere</strong><br>
+        <em>- Il senso:</em> Il <em>to</em> indica una direzione verso una meta ("verso" qualcosa). Se guardi avanti verso un traguardo che devi ancora raggiungere, un'intenzione, una promessa o un dovere futuro, usi il <em>to</em>.<br>
+        <em>- Esempi:</em> <span class="code-snippet">Want to go</span> (voglio andare, non ci sono ancora), <span class="code-snippet">Plan to start</span> (progetto futuro), <span class="code-snippet">Remember to lock</span> (ricordati di *dover fare* un compito futuro).</p>
+
+        <p style="margin-top: 15px;"><strong>2. L' <code>ING</code> = Realtà, Esperienza vissuta, Abitudine o Ricordo passato</strong><br>
+        <em>- Il senso:</em> L'<em>-ing</em> trasforma l'azione in una "roba tangibile", un blocco di tempo già vissuto o un'attività concreta che scorre e di cui si sperimenta la consistenza.<br>
+        <em>- Esempi:</em> <span class="code-snippet">Enjoy swimming</span> (mi godo l'esperienza concreta), <span class="code-snippet">Remember locking</span> (ho nella mente il ricordo nitido di un'azione già fatta nel passato), <span class="code-snippet">It's no use crying</span> (struttura fissa con l'ing).</p>
+
+        <p style="margin-top: 15px;"><strong>3. Il caso "ZERO" (Infinito nudo) = Azione diretta o forzata</strong><br>
+        <em>- Il senso:</em> Nessuna particella in mezzo. Si usa dopo i verbi modali (<span class="code-snippet">can swim</span>), dopo i verbi causativi *make/let* (<span class="code-snippet">made me cry</span>) e dopo i verbi di percezione passiva (<span class="code-snippet">saw him run</span>).</p>
+
+        <div style="background: #ffffff; border-left: 3px solid #f1c40f; padding: 12px 15px; border-radius: 0 4px 4px 0; font-size: 0.92rem; color: #7d6608; margin-top: 20px;">
+            ⚡ <strong>I tre binari per non sbagliare mai:</strong><br>
+            • Obiettivo futuro, promessa, sforzo o compito da fare? ➔ <strong>TO</strong><br>
+            • Esperienza concreta, abitudine, ricordo passato o flusso in corso? ➔ <strong>-ING</strong><br>
+            • Verbi modali, make/let o percezioni dirette? ➔ <strong>ZERO (Nessuna particella)</strong>
+        </div>
+    </div>
+
+    <!-- NUOVA SEZIONE: I VERBI D'AZIONE DOPPI (STOP, REGRET, GO ON) -->
+    <div class="section-block" style="border-left: 4px solid var(--accent-rule); background: #fdfefe;">
+        <h3>🔄 I Verbi d'Azione Doppi (Il cambio radicale tra To e -ing)</h3>
+        <div class="choice-explanation">
+            Applicando rigorosamente la Regola d'Oro del Tempo, alcuni famosissimi verbi d'azione cambiano completamente significato a seconda che siano seguiti da <em>to</em> o da <em>-ing</em>:
+        </div>
+        
+        <p><strong>1. STOP:</strong><br>
+        • <span class="code-snippet">Stop + TO + infinito</span> = **Fermarsi allo scopo di fare qualcos'altro** (Il *to* indica un obiettivo futuro verso cui ti volti: es. *We stopped to eat* = Ci siamo fermati per [andare a] mangiare).<br>
+        • <span class="code-snippet">Stop + -ING</span> = **Smettere definitivamente di fare quell'azione** (L'*ing* taglia e congela l'esperienza concreta che stavate facendo: es. *We stopped eating* = Abbiamo smesso di mangiare).</p>
+
+        <p style="margin-top: 15px;"><strong>2. REGRET:</strong><br>
+        • <span class="code-snippet">Regret + TO + infinito</span> = **Provare rammarico per una brutta notizia che stiamo per dare** (Il *to* guarda avanti all'annuncio ufficiale: es. *I regret to inform you...* = Mi rammarico di [dovervi] informare...).<br>
+        • <span class="code-snippet">Regret + -ING</span> = **Pentirsi di un'azione fatta nel passato** (L'*ing* guarda indietro a un'esperienza reale già vissuta: es. *I regret spending all that money* = Mi pento di aver speso tutti quei soldi).</p>
+
+        <p style="margin-top: 15px;"><strong>3. GO ON:</strong><br>
+        • <span class="code-snippet">Go on + TO + infinito</span> = **Passare a un'azione successiva o a un nuovo argomento** (Finisci una fase e ti volti verso una meta nuova: es. *He went on to discuss the budget* = È passato a discutere il budget).<br>
+        • <span class="code-snippet">Go on + -ING</span> = **Continuare a fare la stessa identica cosa** senza interruzione (L'*ing* fa scorrere il film ininterrotto: es. *He went on talking for hours* = Ha continuato a parlare per ore).</p>
+    </div>
+
+    <!-- TABELLA TASSONOMICA COMPLETA CON TASTI INTERATTIVI -->
+    <div class="section-block">
+        <h3>3. La Mappa Definitiva dei Verbi (Stati & Azioni)</h3>
+        <div class="choice-explanation">
+            Clicca su <strong>"Esempi"</strong> in ogni riga per scoprire in due parole smart come si comportano quando c'è di mezzo un secondo verbo.
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Verbo / Categoria</th>
+                    <th style="width: 12%;">Tipo</th>
+                    <th style="width: 15%;">Forma Base</th>
+                    <th style="width: 23%;">Reggenza 2° Verbo</th>
+                    <th style="width: 25%;">Esempi e sfumature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- STATIVI - EMOZIONALI -->
+                <tr>
+                    <td><strong>Love, Like, Hate, Prefer</strong><br><span style="font-size: 0.78rem; color: #576574;">Affetti e preferenze</span></td>
+                    <td><span class="tag-stative">Stative</span></td>
+                    <td>Simple (No -ing)</td>
+                    <td><strong>Entrambi (-ing / to)</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempi</summary>
+                            <div class="nuance-content">
+                                <strong>Con l'-ing:</strong> <span class="code-snippet">I love swimming.</span> (Adoro il nuoto in generale, mi godo la sensazione).<br>
+                                <strong>Con il to:</strong> <span class="code-snippet">I love to swim in the morning.</span> (È la mia abitudine preferita o una scelta organizzata).<br>
+                                <em>Dritta:</em> Nella vita di tutti i giorni si usano spesso come ti suonano meglio, senza troppi pensieri!
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Want, Need, Desire</strong><br><span style="font-size: 0.78rem; color: #576574;">Desideri e bisogni</span></td>
+                    <td><span class="tag-stative">Stative</span></td>
+                    <td>Simple (No -ing)</td>
+                    <td><strong>Solo TO</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempio</summary>
+                            <div class="nuance-content">
+                                <span class="code-snippet">I want to drink a coffee.</span><br>
+                                <em>Perché solo TO?</em> Perché se vuoi qualcosa, in questo momento *non ce l'hai*. Stai puntando a un domani (o a un minuto dopo), quindi scatta sempre il <em>to</em>.
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Dislike, Detest</strong><br><span style="font-size: 0.78rem; color: #576574;">Insofferenza</span></td>
+                    <td><span class="tag-stative">Stative</span></td>
+                    <td>Simple (No -ing)</td>
+                    <td><strong>Solo -ING</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempio</summary>
+                            <div class="nuance-content">
+                                <span class="code-snippet">He dislikes waiting.</span><br>
+                                <em>Perché solo -ING?</em> Perché ti sta dando fastidio un'esperienza concreta che stai subendo proprio ora sulla tua pelle.
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Appreciate, Care</strong><br><span style="font-size: 0.78rem; color: #576574;">Gratitudine</span></td>
+                    <td><span class="tag-stative">Stative</span></td>
+                    <td>Simple (No -ing)</td>
+                    <td><strong>Solo -ING</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempio</summary>
+                            <div class="nuance-content">
+                                <span class="code-snippet">I appreciate your helping me.</span><br>
+                                <em>Perché l'ing?</em> Perché apprezzi un'azione concreta e reale che l'altra persona ha fatto per te.
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+
+                <!-- STATIVI - MENTALI E COGNITIVI -->
+                <tr>
+                    <td><strong>Know, Believe, Remember, Forget</strong><br><span style="font-size: 0.78rem; color: #576574;">Testa e memoria</span></td>
+                    <td><span class="tag-stative">Stative</span></td>
+                    <td>Simple (No -ing)</td>
+                    <td><strong>"That" oppure Entrambi (per Remember/Forget)</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempi</summary>
+                            <div class="nuance-content">
+                                <strong>Remember + TO:</strong> <span class="code-snippet">Remember to buy milk.</span> (Un compito futuro: ricordati di farlo!).<br>
+                                <strong>Remember + ING:</strong> <span class="code-snippet">I remember buying milk.</span> (Un ricordo già registrato nel passato).<br>
+                                <em>La chiave:</em> Il <em>to</em> guarda avanti (il da farsi), l'<em>-ing</em> guarda indietro (il ricordo stampato in testa).
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+
+                <!-- STATIVI - PERCEZIONE INVOLONTARIA -->
+                <tr>
+                    <td><strong>See, Hear, Smell, Taste, Feel</strong><br><span style="font-size: 0.78rem; color: #576574;">I 5 sensi passivi</span></td>
+                    <td><span class="tag-stative">Stative</span></td>
+                    <td>Simple (No -ing)</td>
+                    <td><strong>Infinito senza "to" (Zero)</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempio</summary>
+                            <div class="nuance-content">
+                                <span class="code-snippet">I heard him lock the door.</span><br>
+                                <em>Perché senza to?</em> I sensi catturano la realtà in diretta, senza filtri o proiezioni future. Senti l'azione e basta.
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+
+                <!-- STATIVI - POSSESSO E MISURA -->
+                <tr>
+                    <td><strong>Have, Own, Belong, Cost, Weigh</strong><br><span style="font-size: 0.78rem; color: #576574;">Misure e proprietà</span></td>
+                    <td><span class="tag-stative">Stative</span></td>
+                    <td>Simple (No -ing)</td>
+                    <td><strong>Nessun 2° verbo diretto</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempio</summary>
+                            <div class="nuance-content">
+                                <span class="code-snippet">This bag costs 50 euros.</span><br>
+                                <em>Perché niente secondo verbo?</em> Sono fotografie fisse. La borsa costa 50 euro e fine, non sta compiendo un'azione dinamica.
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+
+                <!-- AZIONE - MOVIMENTO -->
+                <tr>
+                    <td><strong>Run, Walk, Drive, Travel</strong><br><span style="font-size: 0.78rem; color: #576574;">Spostamenti</span></td>
+                    <td><span class="tag-action">Action</span></td>
+                    <td>Amano il Continuous (-ing)</td>
+                    <td><strong>TO (scopo) o -ING</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempi</summary>
+                            <div class="nuance-content">
+                                <strong>Con il TO:</strong> <span class="code-snippet">I ran to catch the train.</span> (Corro con uno scopo preciso nel futuro: prendere il treno).<br>
+                                <strong>Con l'ING:</strong> <span class="code-snippet">I love driving at night.</span> (Ti godi l'azione in sé, l'esperienza pura).
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+
+                <!-- AZIONE - LAVORO E PRODUTTIVITA' -->
+                <tr>
+                    <td><strong>Work, Write, Build, Start, Begin</strong><br><span style="font-size: 0.78rem; color: #576574;">Fare e iniziare</span></td>
+                    <td><span class="tag-action">Action</span></td>
+                    <td>Amano il Continuous (-ing)</td>
+                    <td><strong>Entrambi (-ing / to)</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempi</summary>
+                            <div class="nuance-content">
+                                <span class="code-snippet">It started raining.</span> / <span class="code-snippet">It started to rain.</span><br>
+                                <em>La dritta:</em> Con i verbi che indicano l'inizio di qualcosa, scegli quello che ti suona più naturale in bocca. Il senso non cambia di una virgola!
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+
+                <!-- AZIONE - COMUNICAZIONE -->
+                <tr>
+                    <td><strong>Speak, Talk, Ask, Explain</strong><br><span style="font-size: 0.78rem; color: #576574;">Parlare e interagire</span></td>
+                    <td><span class="tag-action">Action</span></td>
+                    <td>Amano il Continuous (-ing)</td>
+                    <td><strong>TO o -ING</strong> a seconda del contesto</td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempi</summary>
+                            <div class="nuance-content">
+                                <span class="code-snippet">We stopped to talk.</span> (Ci siamo fermati <em>allo scopo di</em> parlare - to).<br>
+                                <span class="code-snippet">We stopped talking.</span> (Abbiamo chiuso la bocca e smesso l'attività - ing).<br>
+                                <em>Ecco la Regola d'Oro:</em> Obiettivo futuro (to) vs tagliare un'azione reale (-ing).
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+
+                <!-- AZIONE - GESTIONE FLUSSO E TENTATIVO -->
+                <tr>
+                    <td><strong>Enjoy, Finish, Stop, Avoid, Try</strong><br><span style="font-size: 0.78rem; color: #576574;">Gestire e tentare</span></td>
+                    <td><span class="tag-action">Action</span></td>
+                    <td>Amano il Continuous (-ing)</td>
+                    <td><strong>Solo -ING (o Try con entrambi)</strong></td>
+                    <td>
+                        <details class="nuance-dropdown">
+                            <summary>Esempi</summary>
+                            <div class="nuance-content">
+                                <strong>Try + TO:</strong> <span class="code-snippet">I tried to open the door.</span> (Fai uno sforzo bello tosto, tiri la maniglia con forza).<br>
+                                <strong>Try + ING:</strong> <span class="code-snippet">Try restarting the phone.</span> (Fai un esperimento semplice, una prova sul campo).
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 4. DIALOGO GUIDATO DI PALESTRA GRAMMATICALE (ESTESO CON ANALISI) -->
+    <div class="dialogue-box">
+        <h3>💬 Palestra Grammaticale Guidata (Analisi passo-passo dei verbi)</h3>
+        <p style="font-size: 0.95rem; color: #34495e; margin-bottom: 20px;">
+            Una conversazione estesa che integra praticamente tutti i verbi e le categorie della griglia. Ogni snodo grammaticale è analizzato tra parentesi alla luce della Regola d'Oro e delle sfumature.
+        </p>
+        
+        <div class="dialogue-line">
+            <strong>Mark:</strong> "Hey Sarah! Do you <strong>want to grab</strong> a coffee later? I <strong>plan to finish</strong> my work early."
+            <span class="grammar-explanation">💡 <em>Analisi grammaticale:</em> <strong>Want</strong> e <strong>Plan</strong> (verbi stativi di desiderio/progetto) reggono il <strong>TO</strong> perché l'azione e la meta si proiettano nel futuro (non sono ancora reali).</span>
+        </div>
+
+        <div class="dialogue-line">
+            <strong>Sarah:</strong> "Hi Mark! I’d <strong>love to join</strong> you, but honestly, I <strong>hate waiting</strong> until the last minute. Right now I am <strong>working</strong> and <strong>writing</strong> the annual report because I <strong>need to submit</strong> it tomorrow."
+            <span class="grammar-explanation">💡 <em>Analisi grammaticale:</em> <strong>Love</strong> regge il <em>to</em> (preferenza organizzata). <strong>Hate</strong> (emozionale) regge l'<strong>-ing</strong> (l'esperienza concreta di aspettare dà fastidio ora). <strong>Am working</strong> e <strong>writing</strong> sono Action Verbs al Continuous (film in movimento in corso). <strong>Need</strong> vuole il <strong>TO</strong> (carenza attuale che punta a un obiettivo futuro).</span>
+        </div>
+
+        <div class="dialogue-line">
+            <strong>Mark:</strong> "I <strong>understand</strong> your stress. But you <strong>know</strong> that pushing too hard isn't good. Do you <strong>remember to take</strong> short breaks, or do you <strong>prefer working</strong> straight through?"
+            <span class="grammar-explanation">💡 <em>Analisi grammaticale:</em> <strong>Understand</strong> e <strong>Know</strong> sono Stative Verbs puri (fotografie fisse, usati solo al Simple). <strong>Remember + TO</strong> indica un compito futuro da compiere (ricordati di farlo!). <strong>Prefer</strong> regge l'<strong>-ing</strong> (piacere orientato all'esperienza globale).</span>
+        </div>
+
+        <div class="dialogue-line">
+            <strong>Sarah:</strong> "I usually <strong>forget to rest</strong>, but today I <strong>started working</strong> at 7 AM to <strong>avoid working</strong> late. Earlier my PC froze, but I <strong>tried restarting</strong> it and now it <strong>belongs</strong> to the living world again!"
+            <span class="grammar-explanation">💡 <em>Analisi grammaticale:</em> <strong>Forget + TO</strong> guarda al futuro (dimenticare un dovere). <strong>Started</strong> accetta l'<strong>-ing</strong> (può usare indifferentemente to o ing). <strong>Avoid</strong> vuole solo l'<strong>-ing</strong> (evitare un'attività concreta). <strong>Try + ING</strong> indica un test empirico sul campo (ho provato a riavviare per vedere l'effetto). <strong>Belongs</strong> è un verbo stativo di possesso (forma Simple, niente ing).</span>
+        </div>
+
+        <div class="dialogue-line">
+            <strong>Mark:</strong> "I <strong>remember reading</strong> online that old updates cause bugs. Also, your laptop <strong>costs</strong> a lot, so treat it well! Anyway, I <strong>dislike seeing</strong> you stressed. You <strong>make me smile</strong> when you are relaxed, so let me <strong>help you finish</strong> faster."
+            <span class="grammar-explanation">💡 <em>Analisi grammaticale:</em> <strong>Remember + ING</strong> guarda al passato (ho il ricordo nitido nella mente). <strong>Costs</strong> è uno stativo di misura (Simple puro). <strong>Dislike</strong> vuole solo l'<strong>-ing</strong> (avversione per l'esperienza concreta). <strong>Make</strong> e <strong>Help</strong> usano l'<em>infinito nudo</em> (verbo base senza *to* né *-ing* dopo l'oggetto).</span>
+        </div>
+
+        <div class="dialogue-line">
+            <strong>Sarah:</strong> "That sounds amazing! I really <strong>appreciate your helping</strong> me. Oh, before we go, <strong>does this coffee taste</strong> good? The chef is <strong>tasting</strong> the sauce right now too!"
+            <span class="grammar-explanation">💡 <em>Analisi grammaticale:</em> <strong>Appreciate</strong> regge l'<strong>-ing</strong> (riconoscere un'azione concreta ricevuta). <strong>Does this coffee taste</strong> usa *taste* come verbo stativo (proprietà fissa della zuppa). <strong>The chef is tasting</strong> usa *taste* come verbo d'azione (camaleonte: l'atto volontario e attivo di assaggiare al Continuous).</span>
+        </div>
+
+        <div class="translation" style="margin-top: 20px; border-top: 1px dashed #a3e4d7; padding-top: 15px;">
+            <em>(Traduzione integrale: <br>
+            • Mark: "Ehi Sarah! Ti va di prendere un caffè più tardi? Ho in programma di finire il mio lavoro presto."<br>
+            • Sarah: "Ciao Mark! Mi piacerebbe un unirmi a voi, ma onestamente odio aspettare fino all'ultimo minuto. In questo momento sto lavorando e scrivendo il report annuale perché ho bisogno di consegnarlo domani."<br>
+            • Mark: "Capisco il tuo stress. Ma sai che spingere troppo non fa bene. Ti ricordi di fare brevi pause o preferisci lavorare di fila?"<br>
+            • Sarah: "Di solito mi dimentico di riposare, ma oggi ho iniziato a lavorare alle 7:00 per evitare di lavorare fino a tardi. Prima il mio PC si è bloccato, ma ho provato a riavviarlo e ora appartiene di nuovo al mondo dei vivi!"<br>
+            • Mark: "Ricordo di aver letto online che i vecchi aggiornamenti causano bug. Inoltre, il tuo portatile costa molto, quindi trattalo bene! Comunque, mi dispiace [dislike] vederti stressata. Mi fai sorridere quando sei rilassata, quindi lasciami aiutarti a finire più velocemente."<br>
+            • Sarah: "Sembra fantastico! Apprezzo davvero che tu mi aiuti. Oh, prima di andare, questo caffè ha un buon sapore? Anche lo chef sta assaggiando la salsa in questo momento!")</em>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
